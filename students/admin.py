@@ -1,10 +1,12 @@
 from django.contrib import admin
 from .models import Student, Lifestyle, Performance
 
+
 @admin.register(Student)
 class StudentAdmin(admin.ModelAdmin):
-    list_display = ('name', 'branch', 'year')
+    list_display = ('name', 'branch', 'program', 'year', 'semester')
     search_fields = ('name', 'branch')
+    list_filter = ('program', 'year')
 
 
 @admin.register(Lifestyle)
