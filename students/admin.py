@@ -1,3 +1,19 @@
 from django.contrib import admin
+from .models import Student, Lifestyle, Performance
 
-# Register your models here.
+@admin.register(Student)
+class StudentAdmin(admin.ModelAdmin):
+    list_display = ('name', 'branch', 'year')
+    search_fields = ('name', 'branch')
+
+
+@admin.register(Lifestyle)
+class LifestyleAdmin(admin.ModelAdmin):
+    list_display = ('student', 'study_hours', 'sleep_hours', 'screen_time', 'attendance')
+    list_filter = ('attendance',)
+
+
+@admin.register(Performance)
+class PerformanceAdmin(admin.ModelAdmin):
+    list_display = ('student', 'cgpa', 'assignments_completed')
+    list_filter = ('cgpa',)
